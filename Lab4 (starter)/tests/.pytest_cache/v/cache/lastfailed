@@ -1,0 +1,4 @@
+{
+  "maze_tests.py::test_maze_big_stack": true,
+  "maze_tests.py::test_maze_big_queue": true
+}
