@@ -73,4 +73,4 @@ def rwstepsLoop(start, low, hi):
     pass
 
 if __name__ == '__main__':
-    print(rs())
+   rwsteps(start=3, low=0, hi=8)

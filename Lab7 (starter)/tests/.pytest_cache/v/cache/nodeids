@@ -1,0 +1,7 @@
+[
+  "hashmap_tests.py::test_containsKey",
+  "hashmap_tests.py::test_get",
+  "hashmap_tests.py::test_keys",
+  "hashmap_tests.py::test_put",
+  "hashmap_tests.py::test_remove"
+]
