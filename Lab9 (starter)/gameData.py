@@ -23,7 +23,7 @@ class GameData:
         # direction or in AI mode
         self.__currentMode = self.SnakeMode.GOING_EAST
 
-        #A 2D array of cells in the board
+        # A 2D array of cells in the board
         self.__board = self.createBoard()
 
         # A list of cells that currently contain food (from oldest to newest)
@@ -108,7 +108,7 @@ class GameData:
         return len(self.__foodCells) == 0
 
     def addFood(self):
-        """ Adds food to an open spont on the board """
+        """ Adds food to an open spot on the board """
 
         # Find a value between 1 and self.__height-1 (inclusive)
         row = random.randrange(1, self.__height)
@@ -144,6 +144,7 @@ class GameData:
     def _removeTail(self):
         tail = self.__snakeCells.pop()
         tail.becomeEmpty()
+        self.__freeCells += 1
 
     def _eatAt(self, foodCell):
         if foodCell in self.__foodCells:
@@ -207,10 +208,10 @@ class GameData:
     def getRandomNeighbor(self, center):
         """ Returns a random empty neighbor of the given cell """
         neighbors = self.getNeighbors(center)
-        for cell in neighbors:
-            if cell.isEmpty():
-                return cell
-        # If none of them are empty, just return the first one
+        empties = [cell for cell in neighbors if cell.isEmpty()]
+        if empties:
+            return random.choice(empties)
+        # If none of them are empty, just return a random neighbor
         return random.choice(list(neighbors))
 
     ###################################
@@ -267,12 +268,51 @@ class GameData:
     # Helper method(s) for reverse #
     ################################
 
-    # TODO Write method(s) here to help reverse the snake
-    # Steps:
-    #  - Unlabel the head
-    #  - Reverse the body
-    #  - Relabel the head
-    #  - Calculate the new direction of the snake
+    def reverseSnake(self):
+        """Reverse the snake so that the tail becomes the new head and
+           the movement direction is flipped accordingly, while keeping
+           AI mode on if it was already on."""
+
+        # Need at least a head and a tail
+        if len(self.__snakeCells) < 2:
+            return
+
+        # Unlabel the old head (it will become part of the body)
+        oldHead = self.getSnakeHead()
+        oldHead.becomeBody()
+
+        # Reverse the body list so the tail becomes first
+        self.__snakeCells.reverse()
+
+        # Relabel the new head (old tail) as head
+        newHead = self.getSnakeHead()
+        newHead.becomeHead()
+
+        # Use the new head and the "neck" (next body segment)
+        # to figure out the new direction.
+        neck = self.getSnakeNeck()
+
+        dr = neck.getRow() - newHead.getRow()
+        dc = neck.getCol() - newHead.getCol()
+
+        # Determine new direction enum based on relative position
+        newDir = self.__currentMode
+        if dr == 1 and dc == 0:
+            # neck is south of head -> we are moving north
+            newDir = self.SnakeMode.GOING_NORTH
+        elif dr == -1 and dc == 0:
+            # neck is north of head -> we are moving south
+            newDir = self.SnakeMode.GOING_SOUTH
+        elif dr == 0 and dc == 1:
+            # neck is east of head -> we are moving west
+            newDir = self.SnakeMode.GOING_WEST
+        elif dr == 0 and dc == -1:
+            # neck is west of head -> we are moving east
+            newDir = self.SnakeMode.GOING_EAST
+
+        # Only update direction if we are not currently in AI mode
+        if self.__currentMode != self.SnakeMode.AI_MODE:
+            self.__currentMode = newDir
 
     #################################
     # Methods for AI implementation #

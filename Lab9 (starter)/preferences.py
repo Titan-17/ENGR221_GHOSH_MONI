@@ -43,12 +43,12 @@ class Preferences:
     # Colors #
     ##########
 
-    COLOR_BACKGROUND = pygame.Color('lavender')
-    COLOR_WALL = pygame.Color('gray40')
+    COLOR_BACKGROUND = pygame.Color('aquamarine')
+    COLOR_WALL = pygame.Color('aquamarine')
     COLOR_FOOD = pygame.Color('firebrick')
-    COLOR_EMPTY = pygame.Color('lavender')
-    COLOR_HEAD = pygame.Color('darkorchid4')
-    COLOR_BODY = pygame.Color('darkorchid1')
+    COLOR_EMPTY = pygame.Color('cyan')
+    COLOR_HEAD = pygame.Color('chocolate1')
+    COLOR_BODY = pygame.Color('chocolate4')
 
     ##########################
     # Game over text display #

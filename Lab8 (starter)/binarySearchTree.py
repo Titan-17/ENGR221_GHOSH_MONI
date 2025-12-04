@@ -1,5 +1,5 @@
 """
-TODO: WRITE YOUR PROGRAM HEADER HERE
+Hey! I hope your Day is going awesome!
 """
 
 class BinarySearchTree:
