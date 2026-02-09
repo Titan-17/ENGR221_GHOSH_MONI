@@ -1,9 +1,6 @@
 import pytest
-import sys, os
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from playlist import Playlist
-
 from song import Song
 
 @pytest.fixture
