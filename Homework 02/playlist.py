@@ -1,7 +1,5 @@
 """
-Author: Liz
-Filename: playlist.py
-Description: Implementation of a playlist as an array with duplicates
+Hi, Hopefully you are having a Great Day!
 """
 
 from song import Song
