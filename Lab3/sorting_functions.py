@@ -1,6 +1,6 @@
 """
 Name: Moni Ghosh
-sortingFunctions.py
+sortingFunctions.py Lab 3 
 Description: Implementation of sorting algorithms.
 """
 
