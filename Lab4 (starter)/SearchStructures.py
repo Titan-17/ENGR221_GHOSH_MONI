@@ -1,5 +1,7 @@
 """
-Moni Ghosh Lab 4
+Hey! We meet again!
+Moni Ghosh
+Lab 4
 """
 
 # Implementation of a Stack

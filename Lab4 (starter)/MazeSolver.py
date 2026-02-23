@@ -1,5 +1,7 @@
 """
-WRITE YOUR PROGRAM HEADER HERE
+Hi, nice to meet you! 
+Moni Ghosh
+Lab 4
 """
 
 import sys, os 
