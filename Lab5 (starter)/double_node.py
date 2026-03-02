@@ -1,5 +1,5 @@
 """
-Good Day!
+Hopefully your day is going Good!
 """
 
 class DoubleNode():
