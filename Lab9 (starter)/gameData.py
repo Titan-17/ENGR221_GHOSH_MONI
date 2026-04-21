@@ -1,5 +1,7 @@
 """
-Hi There! We meet again on this beautiful Day in November!
+Moni Ghosh
+April 21, 2026
+The game controls/data
 """
 
 from boardCell import BoardCell
